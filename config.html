@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configurer ma Luxion – LUXION</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .config-section {
+      max-width: 600px;
+      margin: 80px auto;
+      background-color: #1a1a1a;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.1);
+      color: white;
+    }
+    .config-section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .config-section label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+    .config-section select,
+    .config-section input,
+    .config-section textarea {
+      width: 100%;
+      padding: 10px;
+      background-color: #111;
+      border: 1px solid #555;
+      color: white;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    .config-section button {
+      background-color: #D8D8D8;
+      color: black;
+      font-weight: bold;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .message-devis {
+      margin-top: 20px;
+      font-style: italic;
+      text-align: center;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <img src="img/logo-luxion.png" alt="LUXION" class="logo">
+  <nav>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="produits.html">Best-Sellers</a></li>
+      <li><a href="config.html">Créer ma Luxion</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="a_propos.html">À propos</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="config-section">
+    <h2>Configurez votre Luxion</h2>
+    <form onsubmit="handleConfig(event)">
+      <label for="modele">Choisissez votre modèle :</label>
+      <select id="modele">
+        <option disabled selected>-- Choisir un partenariat --</option>
+        <option value="LV">Luxion LV x Hermès</option>
+        <option value="OpenAI">Luxion OpenAI</option>
+        <option value="Rolex">Luxion Chanel x Rolex</option>
+        <option value="AirFrance">Luxion Air France</option>
+        <option value="NASA">Luxion NASA</option>
+      </select>
+
+      <label for="budget">Votre budget (en euros) :</label>
+      <input type="number" id="budget" placeholder="Ex: 1800000" required>
+
+      <div class="message-devis" id="devisMessage"></div>
+
+      <label for="email">Votre email :</label>
+      <input type="email" id="email" placeholder="exemple@mail.com" required>
+
+      <button type="submit">Recevoir mon devis</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 LUXION. Tous droits réservés.</p>
+  <nav>
+    <a href="a_propos.html">À propos</a>
+  </nav>
+</footer>
+
+<script>
+function handleConfig(e) {
+  e.preventDefault();
+  const modele = document.getElementById('modele').value;
+  const budget = document.getElementById('budget').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('devisMessage');
+
+  if (!modele || !budget || !email) return;
+
+  message.innerHTML = `Merci ! Un devis pour le modèle <strong>${modele}</strong> vous sera envoyé à <strong>${email}</strong> selon votre budget de <strong>${budget} €</strong>.`;
+}
+</script>
+</body>
+</html>
